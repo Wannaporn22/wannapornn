@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cat Gallery | โลกของแมวน่ารัก</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff5f8;
+    color: #555;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #ffb6d0, #ffe0eb);
+    text-align: center;
+    padding: 55px 20px;
+}
+
+header h1 {
+    color: #a83e68;
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+header p {
+    color: #79485b;
+    font-size: 17px;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.filter-buttons button {
+    border: none;
+    background: #ffc5d8;
+    color: #8d3c5b;
+    padding: 12px 25px;
+    margin: 5px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.filter-buttons button:hover,
+.filter-buttons button.active {
+    background: #e86c9b;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 20px 8%;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px #e8c5d2;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px #d9a5b8;
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card h3 {
+    color: #c45480;
+    padding: 15px 15px 5px;
+}
+
+.card p {
+    padding: 5px 15px 20px;
+    font-size: 14px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+    background: #ffdce8;
+    color: #9b4b69;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 30px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🐱 Cat Gallery</h1>
+    <p>โลกแห่งความน่ารักของเจ้าเหมียว รวมแมวหลากหลายสายพันธุ์</p>
+</header>
+
+<!-- ปุ่มกรองหมวดหมู่ -->
+<div class="filter-buttons">
+    <button class="active" onclick="filterCat('all', this)">ทั้งหมด</button>
+    <button onclick="filterCat('persian', this)">แมวเปอร์เซีย</button>
+    <button onclick="filterCat('orange', this)">แมวส้ม</button>
+    <button onclick="filterCat('short', this)">แมวขนสั้น</button>
+</div>
+
+<!-- Gallery -->
+<div class="gallery">
+
+    <div class="card" data-category="persian">
+        <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=600" alt="แมวเปอร์เซีย">
+        <h3>แมวเปอร์เซีย</h3>
+        <p>แมวขนยาว หน้ากลมน่ารัก ดูสง่างาม</p>
+    </div>
+
+    <div class="card" data-category="persian">
+        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600" alt="แมวเปอร์เซีย">
+        <h3>เปอร์เซียสีขาว</h3>
+        <p>ขนนุ่มฟู สีขาวสะอาด น่ากอด</p>
+    </div>
+
+    <div class="card" data-category="orange">
+        <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600" alt="แมวส้ม">
+        <h3>แมวส้ม</h3>
+        <p>แมวสีส้มสดใส ขี้เล่นและเป็นมิตร</p>
+    </div>
+
+    <div class="card" data-category="orange">
+        <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=600" alt="แมวส้ม">
+        <h3>เจ้าเหมียวส้ม</h3>
+        <p>แมวส้มสุดน่ารัก ชอบเล่นและสำรวจ</p>
+    </div>
+
+    <div class="card" data-category="short">
+        <img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=600" alt="แมวขนสั้น">
+        <h3>แมวขนสั้น</h3>
+        <p>ขนสั้น ดูแลง่าย และมีความน่ารัก</p>
+    </div>
+
+    <div class="card" data-category="short">
+        <img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=600" alt="แมวขนสั้น">
+        <h3>เจ้าแมวตัวน้อย</h3>
+        <p>แมวตัวเล็ก น่ารัก ขี้อ้อน</p>
+    </div>
+
+</div>
+
+<footer>
+    <p>🐾 Cat Gallery | เว็บไซต์แนะนำแมวน่ารัก 🐾</p>
+    <p>จัดทำเพื่อการศึกษา</p>
+</footer>
+
+<script>
+
+// ระบบกรองหมวดหมู่
+function filterCat(category, button) {
+
+    let cards = document.querySelectorAll(".card");
+    let buttons = document.querySelectorAll(".filter-buttons button");
+
+    cards.forEach(function(card) {
+
+        if (category === "all" ||
+            card.dataset.category === category) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+    // เปลี่ยนสีปุ่มที่เลือก
+    buttons.forEach(function(btn) {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,2 +1,0 @@
-# wannapornn
-Cat Gallery
