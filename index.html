@@ -9,7 +9,6 @@
 
 <style>
 
-/* ตกแต่งเว็บไซต์ */
 * {
     margin: 0;
     padding: 0;
@@ -22,7 +21,7 @@ body {
     color: #555;
 }
 
-/* ส่วนหัวเว็บไซต์ */
+/* ส่วนหัว */
 header {
     background: linear-gradient(135deg, #ffb6d0, #ffe0eb);
     text-align: center;
@@ -37,10 +36,9 @@ header h1 {
 
 header p {
     color: #79485b;
-    font-size: 17px;
 }
 
-/* ปุ่มกรองหมวดหมู่ */
+/* ปุ่มกรอง */
 .filter-buttons {
     text-align: center;
     padding: 30px 10px;
@@ -54,7 +52,6 @@ header p {
     margin: 5px;
     border-radius: 25px;
     cursor: pointer;
-    font-size: 15px;
     transition: 0.3s;
 }
 
@@ -65,7 +62,7 @@ header p {
     transform: translateY(-3px);
 }
 
-/* จัดเรียงการ์ด */
+/* Gallery */
 .gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -73,7 +70,6 @@ header p {
     padding: 20px 8%;
 }
 
-/* การ์ดแมว */
 .card {
     background: white;
     border-radius: 18px;
@@ -84,7 +80,6 @@ header p {
 
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 20px #d9a5b8;
 }
 
 .card img {
@@ -103,7 +98,7 @@ header p {
     font-size: 14px;
 }
 
-/* ปุ่มกดไลค์ */
+/* ปุ่มไลค์ */
 .like-btn {
     background: #ffe0eb;
     color: #e85b8c;
@@ -112,13 +107,6 @@ header p {
     margin: 0 15px 15px;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
-}
-
-.like-btn:hover {
-    background: #ffb6d0;
-    transform: scale(1.08);
 }
 
 .like-btn.liked {
@@ -126,7 +114,72 @@ header p {
     color: white;
 }
 
-/* ส่วนท้าย */
+/* ส่วนแสดงความคิดเห็น */
+.comment-section {
+    background: white;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px #e8c5d2;
+}
+
+.comment-section h2 {
+    text-align: center;
+    color: #c45480;
+    margin-bottom: 20px;
+}
+
+.comment-section input,
+.comment-section textarea {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 12px;
+    border: 1px solid #f3b5cb;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+}
+
+.comment-section textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.comment-btn {
+    background: #e86c9b;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.comment-btn:hover {
+    background: #c45480;
+    transform: scale(1.05);
+}
+
+/* กล่องความคิดเห็น */
+.comment-item {
+    background: #fff0f5;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 15px;
+    overflow-wrap: anywhere;
+}
+
+.comment-item h4 {
+    color: #c45480;
+    margin-bottom: 8px;
+}
+
+.comment-item p {
+    white-space: pre-wrap;
+}
+
+/* Footer */
 footer {
     text-align: center;
     padding: 25px;
@@ -135,11 +188,15 @@ footer {
     color: #9b4b69;
 }
 
-/* รองรับโทรศัพท์มือถือ */
+/* Responsive */
 @media (max-width: 768px) {
     .gallery {
         grid-template-columns: repeat(2, 1fr);
         padding: 15px;
+    }
+
+    .comment-section {
+        margin: 20px 15px;
     }
 }
 
@@ -164,91 +221,87 @@ footer {
     <p>โลกแห่งความน่ารักของเจ้าเหมียว รวมแมวหลากหลายสายพันธุ์ 💗</p>
 </header>
 
-<!-- ปุ่มกรองหมวดหมู่ -->
+<!-- FILTER -->
 <div class="filter-buttons">
 
-    <button class="active" onclick="filterCat('all', this)">
-        ทั้งหมด
-    </button>
+    <button class="active" onclick="filterCat('all', this)">ทั้งหมด</button>
 
-    <button onclick="filterCat('persian', this)">
-        แมวเปอร์เซีย
-    </button>
+    <button onclick="filterCat('persian', this)">แมวเปอร์เซีย</button>
 
-    <button onclick="filterCat('orange', this)">
-        แมวส้ม
-    </button>
+    <button onclick="filterCat('orange', this)">แมวส้ม</button>
 
-    <button onclick="filterCat('short', this)">
-        แมวขนสั้น
-    </button>
+    <button onclick="filterCat('short', this)">แมวขนสั้น</button>
 
 </div>
 
 <!-- GALLERY -->
 <div class="gallery">
 
-    <!-- แมวเปอร์เซีย -->
     <div class="card" data-category="persian">
         <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=600" alt="แมวเปอร์เซีย">
         <h3>🐱 แมวเปอร์เซีย</h3>
         <p>แมวขนยาว หน้ากลมน่ารัก ดูสง่างาม</p>
-
-        <button class="like-btn" onclick="likeCat(this)">
-            ❤️ <span>0</span> Like
-        </button>
+        <button class="like-btn" onclick="likeCat(this)">❤️ <span>0</span> Like</button>
     </div>
 
     <div class="card" data-category="persian">
         <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600" alt="แมวสีขาว">
         <h3>🐱 เปอร์เซียสีขาว</h3>
         <p>ขนนุ่มฟู สีขาวสะอาด น่ากอด</p>
-
-        <button class="like-btn" onclick="likeCat(this)">
-            ❤️ <span>0</span> Like
-        </button>
+        <button class="like-btn" onclick="likeCat(this)">❤️ <span>0</span> Like</button>
     </div>
 
-    <!-- แมวส้ม -->
     <div class="card" data-category="orange">
         <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600" alt="แมวส้ม">
         <h3>🐈 แมวส้ม</h3>
         <p>แมวสีส้มสดใส ขี้เล่นและเป็นมิตร</p>
-
-        <button class="like-btn" onclick="likeCat(this)">
-            ❤️ <span>0</span> Like
-        </button>
+        <button class="like-btn" onclick="likeCat(this)">❤️ <span>0</span> Like</button>
     </div>
 
     <div class="card" data-category="orange">
         <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=600" alt="แมวส้ม">
         <h3>🐈 เจ้าเหมียวส้ม</h3>
         <p>แมวส้มสุดน่ารัก ชอบเล่นและสำรวจ</p>
-
-        <button class="like-btn" onclick="likeCat(this)">
-            ❤️ <span>0</span> Like
-        </button>
+        <button class="like-btn" onclick="likeCat(this)">❤️ <span>0</span> Like</button>
     </div>
 
-    <!-- แมวขนสั้น -->
     <div class="card" data-category="short">
         <img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=600" alt="แมวขนสั้น">
         <h3>🐾 แมวขนสั้น</h3>
         <p>ขนสั้น ดูแลง่าย และมีความน่ารัก</p>
-
-        <button class="like-btn" onclick="likeCat(this)">
-            ❤️ <span>0</span> Like
-        </button>
+        <button class="like-btn" onclick="likeCat(this)">❤️ <span>0</span> Like</button>
     </div>
 
     <div class="card" data-category="short">
         <img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=600" alt="แมวน้อย">
         <h3>🐾 เจ้าแมวตัวน้อย</h3>
         <p>แมวตัวเล็ก น่ารัก ขี้อ้อน</p>
+        <button class="like-btn" onclick="likeCat(this)">❤️ <span>0</span> Like</button>
+    </div>
 
-        <button class="like-btn" onclick="likeCat(this)">
-            ❤️ <span>0</span> Like
-        </button>
+</div>
+
+<!-- COMMENT SECTION -->
+<div class="comment-section">
+
+    <h2>💬 แสดงความคิดเห็น</h2>
+
+    <input type="text" id="username"
+    placeholder="กรอกชื่อของคุณ">
+
+    <textarea id="commentText"
+    placeholder="เขียนความคิดเห็นของคุณ..."></textarea>
+
+    <button class="comment-btn" onclick="addComment()">
+        ส่งความคิดเห็น 💗
+    </button>
+
+    <h3 style="color:#c45480; margin-top:25px;">
+        ความคิดเห็นทั้งหมด
+    </h3>
+
+    <div id="commentList">
+        <p style="margin-top:15px;">ยังไม่มีความคิดเห็น</p>
     </div>
 
 </div>
@@ -282,7 +335,6 @@ function filterCat(category, button) {
 
     });
 
-    // เปลี่ยนสีปุ่มที่เลือก
     buttons.forEach(function(btn) {
         btn.classList.remove("active");
     });
@@ -311,6 +363,54 @@ function likeCat(button) {
     }
 
     count.textContent = number;
+
+}
+
+
+// ระบบแสดงความคิดเห็น
+function addComment() {
+
+    let username = document.getElementById("username").value.trim();
+
+    let commentText = document.getElementById("commentText").value.trim();
+
+    let commentList = document.getElementById("commentList");
+
+    // ตรวจสอบข้อมูล
+    if (username === "" || commentText === "") {
+
+        alert("กรุณากรอกชื่อและความคิดเห็นก่อนค่ะ 💗");
+
+        return;
+
+    }
+
+    // ลบข้อความยังไม่มีความคิดเห็น
+    if (commentList.querySelector("p")) {
+        commentList.innerHTML = "";
+    }
+
+    // สร้างกล่องความคิดเห็น
+    let commentItem = document.createElement("div");
+
+    commentItem.className = "comment-item";
+
+    let name = document.createElement("h4");
+    name.textContent = "👤 " + username;
+
+    let message = document.createElement("p");
+    message.textContent = commentText;
+
+    commentItem.appendChild(name);
+    commentItem.appendChild(message);
+
+    commentList.appendChild(commentItem);
+
+    // ล้างช่องกรอกข้อความ
+    document.getElementById("username").value = "";
+    document.getElementById("commentText").value = "";
+
+    alert("ส่งความคิดเห็นเรียบร้อยแล้ว 💗");
 
 }
 
