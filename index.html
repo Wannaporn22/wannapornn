@@ -4,9 +4,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cat Gallery | โลกของแมวน่ารัก</title>
+
+<title>Cat Gallery - โลกของแมวน่ารัก</title>
 
 <style>
+
+/* ตกแต่งเว็บไซต์ */
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +22,7 @@ body {
     color: #555;
 }
 
-/* Header */
+/* ส่วนหัวเว็บไซต์ */
 header {
     background: linear-gradient(135deg, #ffb6d0, #ffe0eb);
     text-align: center;
@@ -37,7 +40,7 @@ header p {
     font-size: 17px;
 }
 
-/* Filter Buttons */
+/* ปุ่มกรองหมวดหมู่ */
 .filter-buttons {
     text-align: center;
     padding: 30px 10px;
@@ -62,7 +65,7 @@ header p {
     transform: translateY(-3px);
 }
 
-/* Gallery */
+/* จัดเรียงการ์ด */
 .gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -70,6 +73,7 @@ header p {
     padding: 20px 8%;
 }
 
+/* การ์ดแมว */
 .card {
     background: white;
     border-radius: 18px;
@@ -95,11 +99,34 @@ header p {
 }
 
 .card p {
-    padding: 5px 15px 20px;
+    padding: 5px 15px 15px;
     font-size: 14px;
 }
 
-/* Footer */
+/* ปุ่มกดไลค์ */
+.like-btn {
+    background: #ffe0eb;
+    color: #e85b8c;
+    border: none;
+    padding: 10px 18px;
+    margin: 0 15px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.like-btn:hover {
+    background: #ffb6d0;
+    transform: scale(1.08);
+}
+
+.like-btn.liked {
+    background: #e85b8c;
+    color: white;
+}
+
+/* ส่วนท้าย */
 footer {
     text-align: center;
     padding: 25px;
@@ -108,7 +135,7 @@ footer {
     color: #9b4b69;
 }
 
-/* Responsive */
+/* รองรับโทรศัพท์มือถือ */
 @media (max-width: 768px) {
     .gallery {
         grid-template-columns: repeat(2, 1fr);
@@ -131,63 +158,105 @@ footer {
 
 <body>
 
+<!-- HEADER -->
 <header>
     <h1>🐱 Cat Gallery</h1>
-    <p>โลกแห่งความน่ารักของเจ้าเหมียว รวมแมวหลากหลายสายพันธุ์</p>
+    <p>โลกแห่งความน่ารักของเจ้าเหมียว รวมแมวหลากหลายสายพันธุ์ 💗</p>
 </header>
 
 <!-- ปุ่มกรองหมวดหมู่ -->
 <div class="filter-buttons">
-    <button class="active" onclick="filterCat('all', this)">ทั้งหมด</button>
-    <button onclick="filterCat('persian', this)">แมวเปอร์เซีย</button>
-    <button onclick="filterCat('orange', this)">แมวส้ม</button>
-    <button onclick="filterCat('short', this)">แมวขนสั้น</button>
+
+    <button class="active" onclick="filterCat('all', this)">
+        ทั้งหมด
+    </button>
+
+    <button onclick="filterCat('persian', this)">
+        แมวเปอร์เซีย
+    </button>
+
+    <button onclick="filterCat('orange', this)">
+        แมวส้ม
+    </button>
+
+    <button onclick="filterCat('short', this)">
+        แมวขนสั้น
+    </button>
+
 </div>
 
-<!-- Gallery -->
+<!-- GALLERY -->
 <div class="gallery">
 
+    <!-- แมวเปอร์เซีย -->
     <div class="card" data-category="persian">
         <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=600" alt="แมวเปอร์เซีย">
-        <h3>แมวเปอร์เซีย</h3>
+        <h3>🐱 แมวเปอร์เซีย</h3>
         <p>แมวขนยาว หน้ากลมน่ารัก ดูสง่างาม</p>
+
+        <button class="like-btn" onclick="likeCat(this)">
+            ❤️ <span>0</span> Like
+        </button>
     </div>
 
     <div class="card" data-category="persian">
-        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600" alt="แมวเปอร์เซีย">
-        <h3>เปอร์เซียสีขาว</h3>
+        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600" alt="แมวสีขาว">
+        <h3>🐱 เปอร์เซียสีขาว</h3>
         <p>ขนนุ่มฟู สีขาวสะอาด น่ากอด</p>
+
+        <button class="like-btn" onclick="likeCat(this)">
+            ❤️ <span>0</span> Like
+        </button>
     </div>
 
+    <!-- แมวส้ม -->
     <div class="card" data-category="orange">
         <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600" alt="แมวส้ม">
-        <h3>แมวส้ม</h3>
+        <h3>🐈 แมวส้ม</h3>
         <p>แมวสีส้มสดใส ขี้เล่นและเป็นมิตร</p>
+
+        <button class="like-btn" onclick="likeCat(this)">
+            ❤️ <span>0</span> Like
+        </button>
     </div>
 
     <div class="card" data-category="orange">
         <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=600" alt="แมวส้ม">
-        <h3>เจ้าเหมียวส้ม</h3>
+        <h3>🐈 เจ้าเหมียวส้ม</h3>
         <p>แมวส้มสุดน่ารัก ชอบเล่นและสำรวจ</p>
+
+        <button class="like-btn" onclick="likeCat(this)">
+            ❤️ <span>0</span> Like
+        </button>
     </div>
 
+    <!-- แมวขนสั้น -->
     <div class="card" data-category="short">
         <img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=600" alt="แมวขนสั้น">
-        <h3>แมวขนสั้น</h3>
+        <h3>🐾 แมวขนสั้น</h3>
         <p>ขนสั้น ดูแลง่าย และมีความน่ารัก</p>
+
+        <button class="like-btn" onclick="likeCat(this)">
+            ❤️ <span>0</span> Like
+        </button>
     </div>
 
     <div class="card" data-category="short">
-        <img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=600" alt="แมวขนสั้น">
-        <h3>เจ้าแมวตัวน้อย</h3>
+        <img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=600" alt="แมวน้อย">
+        <h3>🐾 เจ้าแมวตัวน้อย</h3>
         <p>แมวตัวเล็ก น่ารัก ขี้อ้อน</p>
+
+        <button class="like-btn" onclick="likeCat(this)">
+            ❤️ <span>0</span> Like
+        </button>
     </div>
 
 </div>
 
+<!-- FOOTER -->
 <footer>
-    <p>🐾 Cat Gallery | เว็บไซต์แนะนำแมวน่ารัก 🐾</p>
-    <p>จัดทำเพื่อการศึกษา</p>
+    <p>🐾 Cat Gallery | โลกแห่งความน่ารักของแมว 🐾</p>
+    <p>เว็บไซต์จัดทำเพื่อการศึกษา</p>
 </footer>
 
 <script>
@@ -219,6 +288,29 @@ function filterCat(category, button) {
     });
 
     button.classList.add("active");
+
+}
+
+
+// ระบบกดไลค์
+function likeCat(button) {
+
+    let count = button.querySelector("span");
+    let number = Number(count.textContent);
+
+    if (button.classList.contains("liked")) {
+
+        number--;
+        button.classList.remove("liked");
+
+    } else {
+
+        number++;
+        button.classList.add("liked");
+
+    }
+
+    count.textContent = number;
 
 }
 
